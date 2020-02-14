@@ -12,6 +12,36 @@ ul {
   margin-bottom: 10px;
 }
 
+.controls_wrap {
+  display: flex;
+}
+
+.grid_wrap {
+  margin-top: 40px;
+  width: 264px;
+  height: 264px;
+}
+
+.erase {
+  animation: erase 0.5s ease-in-out;
+}
+@keyframes erase {
+  0% {
+    transform: rotate(0%);
+  }
+
+  12% {
+    transform: rotate(-10.89deg);
+  }
+
+  24% {
+    transform: rotate(-15.56deg);
+  }
+  68% {
+    transform: rotate(5.56deg);
+  }
+}
+
 .square {
   border: 1px solid #999;
   float: left;
@@ -24,7 +54,7 @@ ul {
   padding: 0;
   text-align: center;
   width: 34px;
-  flex: 1 0 21%; /* explanation below */
+  transition: all 0.5s ease;
 }
 
 .square:focus {
