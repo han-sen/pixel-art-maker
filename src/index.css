@@ -8,12 +8,6 @@ ul {
   padding-left: 30px;
 }
 
-.board-row:after {
-  clear: both;
-  content: "";
-  display: table;
-}
-
 .status {
   margin-bottom: 10px;
 }
@@ -30,6 +24,7 @@ ul {
   padding: 0;
   text-align: center;
   width: 34px;
+  flex: 1 0 21%; /* explanation below */
 }
 
 .square:focus {

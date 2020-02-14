@@ -30,7 +30,7 @@ class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      squares: Array(9).fill(null)
+      squares: Array(12).fill("#ffffff")
     };
   }
 
@@ -41,37 +41,20 @@ class Board extends React.Component {
     this.setState({ squares: squares });
   }
 
-  renderSquare(i) {
-    return (
-      <Square
-        value={this.state.squares[i]}
-        onClick={() => this.handleClick(i)}
-      />
-    );
-  }
-
   render() {
     const status = <input id="colorPicker" name="Color Picker" type="color" />;
 
     return (
-      <div>
+      <section>
         <div className="status">{status}</div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
+        <div>
+          {this.state.squares.map((x, i) => {
+            return (
+              <Square value={x} onClick={() => this.handleClick(i)} key={i} />
+            );
+          })}
         </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
-      </div>
+      </section>
     );
   }
 }
