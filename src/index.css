@@ -18,13 +18,15 @@ ul {
 
 .grid_wrap {
   margin-top: 40px;
-  width: 264px;
-  height: 264px;
+  width: 384px;
+  height: 504px;
+  border: 1px solid #bebebe;
 }
 
 .erase {
   animation: erase 0.5s ease-in-out;
 }
+
 @keyframes erase {
   0% {
     transform: rotate(0%);
@@ -35,25 +37,23 @@ ul {
   }
 
   24% {
-    transform: rotate(-15.56deg);
+    transform: rotate(-12.56deg);
   }
-  68% {
+  46% {
     transform: rotate(5.56deg);
+  }
+  70% {
+    transform: rotate(-5.28deg);
   }
 }
 
 .square {
-  border: 1px solid #999;
+  border: 1px solid #bebebe;
   float: left;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 34px;
-  height: 34px;
-  margin-right: -1px;
-  margin-top: -1px;
+  height: 24px;
+  width: 24px;
   padding: 0;
-  text-align: center;
-  width: 34px;
+  margin: 0;
   transition: all 0.5s ease;
 }
 
