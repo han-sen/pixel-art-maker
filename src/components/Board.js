@@ -6,7 +6,8 @@ class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      squares: Array(336).fill("")
+      squares: Array(336).fill(""),
+      grid: true
     };
   }
   clearGrid() {
@@ -31,16 +32,30 @@ class Board extends React.Component {
   }
   removeLines() {
     const squares = document.getElementsByClassName("square");
-    [...squares].forEach(x => (x.style.border = "none"));
+    if (this.state.grid === true) {
+      [...squares].forEach(x => (x.style.border = "none"));
+    } else {
+      [...squares].forEach(x => (x.style.border = "1px solid #bebebe"));
+    }
+    this.setState({ grid: !this.state.grid });
   }
   render() {
     return (
-      <section>
+      <section className="app_wrap">
         <div className="controls_wrap">
           <ColorPicker />
-          <button onClick={() => this.fillBoard()}>Fill</button>
-          <button onClick={() => this.clearGrid()}>Clear</button>
-          <button onClick={() => this.removeLines()}>Grid</button>
+          <button className="controls_button" onClick={() => this.fillBoard()}>
+            Fill
+          </button>
+          <button className="controls_button" onClick={() => this.clearGrid()}>
+            Clear
+          </button>
+          <button
+            className="controls_button"
+            onClick={() => this.removeLines()}
+          >
+            Grid
+          </button>
         </div>
         <div id="grid" className="grid_wrap">
           {this.state.squares.map((x, i) => {

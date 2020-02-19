@@ -8,19 +8,30 @@ ul {
   padding-left: 30px;
 }
 
-.status {
-  margin-bottom: 10px;
+.app_wrap {
+  display: flex;
+  padding: 20px;
 }
 
 .controls_wrap {
   display: flex;
+  flex-direction: column;
+}
+
+.controls_button {
+  border-radius: 2px;
+  background-color: #1976d2;
+  color: #fff;
+  border: none;
+  margin: 3px;
+  padding: 3px;
 }
 
 .grid_wrap {
-  margin-top: 40px;
   width: 384px;
   height: 504px;
   border: 1px solid #bebebe;
+  margin-left: 20px;
 }
 
 .erase {
@@ -31,7 +42,6 @@ ul {
   0% {
     transform: rotate(0%);
   }
-
   12% {
     transform: rotate(-10.89deg);
   }
