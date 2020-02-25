@@ -6,7 +6,7 @@ class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      squares: Array(1024).fill(""),
+      squares: Array(576).fill(""),
       grid: true,
       detail: 1
     };
@@ -40,7 +40,13 @@ class Board extends React.Component {
     }
     this.setState({ grid: !this.state.grid });
   }
+  addDetail() {}
   render() {
+    const squareStyle = {};
+    if (this.state.detail === 1) {
+      squareStyle.width = "16px";
+      squareStyle.height = "16px";
+    }
     return (
       <section className="app_wrap">
         <div className="controls_wrap">
@@ -57,12 +63,23 @@ class Board extends React.Component {
           >
             Grid
           </button>
-          <button className="controls_button detail_button">Detail</button>
+          <button
+            className="controls_button detail_button"
+            onClick={() => this.addDetail()}
+          >
+            Divide
+          </button>
         </div>
         <div id="grid" className="grid_wrap">
           {this.state.squares.map((x, i) => {
             return (
-              <Square value={x} onClick={() => this.handleClick(i)} key={i} />
+              <Square
+                width={squareStyle.width}
+                height={squareStyle.height}
+                colorValue={x}
+                onClick={() => this.handleClick(i)}
+                key={i}
+              />
             );
           })}
         </div>

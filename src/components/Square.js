@@ -4,7 +4,11 @@ class Square extends React.Component {
   render() {
     return (
       <button
-        style={{ backgroundColor: this.props.value }}
+        style={{
+          backgroundColor: this.props.colorValue,
+          width: this.props.width,
+          height: this.props.height
+        }}
         className="square"
         onClick={() => this.props.onClick()}
       ></button>

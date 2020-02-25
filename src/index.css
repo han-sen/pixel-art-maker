@@ -62,8 +62,8 @@ ul {
 .square {
   border: 1px solid #bebebe;
   float: left;
-  height: 12px;
-  width: 12px;
+  /* height: 32px;
+  width: 32px; */
   padding: 0;
   margin: 0;
   transition: all 0.5s ease;
