@@ -6,8 +6,14 @@ class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+<<<<<<< HEAD
       squares: Array(1024).fill(""),
       grid: true
+=======
+      squares: Array(336).fill(""),
+      grid: true,
+      detail: 1
+>>>>>>> ef2f1fd63c983d4b01eff2bacc02186e0f9392df
     };
   }
   clearGrid() {
@@ -56,6 +62,11 @@ class Board extends React.Component {
           >
             Grid
           </button>
+          <button 
+            className="controls_button detail_button"
+            >
+              Detail
+            </button>
         </div>
         <div id="grid" className="grid_wrap">
           {this.state.squares.map((x, i) => {
