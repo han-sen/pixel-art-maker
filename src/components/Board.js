@@ -6,9 +6,10 @@ class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      squares: Array(576).fill(""),
+      squares: Array(144).fill(""),
       grid: true,
-      detail: 1
+      detail: 1,
+      size: "32px"
     };
   }
   clearGrid() {
@@ -19,6 +20,21 @@ class Board extends React.Component {
     }, 1000);
     const cleanGrid = this.state.squares.map(x => "#ffffff");
     this.setState({ squares: cleanGrid });
+  }
+  createSquares(detail) {
+    switch (detail) {
+      case 1:
+        this.setState({ squares: Array(144).fill(""), size: "32px" });
+        break;
+      case 2:
+        this.setState({ squares: Array(576).fill(""), size: "16px" });
+        break;
+      case 3:
+        this.setState({ squares: Array(1024).fill(""), size: "12px" });
+        break;
+      default:
+        this.setState({ squares: Array(144).fill(""), size: "32px" });
+    }
   }
   fillBoard() {
     const currentColor = document.getElementById("colorPicker").value;
@@ -40,13 +56,20 @@ class Board extends React.Component {
     }
     this.setState({ grid: !this.state.grid });
   }
-  addDetail() {}
-  render() {
-    const squareStyle = {};
-    if (this.state.detail === 1) {
-      squareStyle.width = "16px";
-      squareStyle.height = "16px";
+  addDetail() {
+    if (this.state.detail < 3) {
+      const newDetail = this.state.detail + 1;
+      this.setState({ detail: newDetail });
+      this.createSquares(newDetail);
+    } else {
+      this.setState({ detail: 1 });
+      this.createSquares(1);
     }
+  }
+  changeDetail() {
+    this.addDetail();
+  }
+  render() {
     return (
       <section className="app_wrap">
         <div className="controls_wrap">
@@ -65,17 +88,17 @@ class Board extends React.Component {
           </button>
           <button
             className="controls_button detail_button"
-            onClick={() => this.addDetail()}
+            onClick={() => this.changeDetail()}
           >
-            Divide
+            {this.state.detail === 3 ? "Less Detail" : "More Detail"}
           </button>
         </div>
         <div id="grid" className="grid_wrap">
           {this.state.squares.map((x, i) => {
             return (
               <Square
-                width={squareStyle.width}
-                height={squareStyle.height}
+                width={this.state.size}
+                height={this.state.size}
                 colorValue={x}
                 onClick={() => this.handleClick(i)}
                 key={i}

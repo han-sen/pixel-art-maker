@@ -34,6 +34,7 @@ ul {
   height: 384px;
   border: 1px solid #bebebe;
   margin-left: 20px;
+  overflow: hidden;
 }
 
 .erase {
