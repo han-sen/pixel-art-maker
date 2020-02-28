@@ -1,8 +1,8 @@
 import React from "react";
+import html2canvas from "html2canvas";
+import { saveAs } from "file-saver";
 import ColorPicker from "./ColorPicker";
 import Square from "./Square";
-import SaveButton from "./SaveButton";
-import html2canvas from "html2canvas";
 
 class Board extends React.Component {
   constructor(props) {
@@ -69,10 +69,14 @@ class Board extends React.Component {
     }
   }
   saveFile() {
-    this.removeLines();
+    if (this.state.grid === true) {
+      this.removeLines();
+    }
     const board = document.getElementById("grid");
     html2canvas(board).then(function(canvas) {
-      document.body.appendChild(canvas);
+      canvas.toBlob(function(blob) {
+        saveAs(blob, "pixel.png");
+      });
     });
   }
   render() {
