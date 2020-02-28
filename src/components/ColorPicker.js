@@ -3,7 +3,7 @@ import React from "react";
 class ColorPicker extends React.Component {
   render() {
     return (
-      <div className="color_picker_wrap">
+      <div className="color_picker_wrap controls_button">
         <input
           id="colorPicker"
           name="Color Picker"
