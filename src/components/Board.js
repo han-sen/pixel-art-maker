@@ -11,8 +11,19 @@ class Board extends React.Component {
       squares: Array(144).fill("#fff"),
       grid: true,
       detail: 1,
-      size: "32px"
+      size: "32px",
+      colors: []
     };
+  }
+  changeDetail() {
+    if (this.state.detail < 3) {
+      const newDetail = this.state.detail + 1;
+      this.setState({ detail: newDetail });
+      this.createSquares(newDetail);
+    } else {
+      this.setState({ detail: 1 });
+      this.createSquares(1);
+    }
   }
   clearGrid() {
     const board = document.getElementById("grid");
@@ -21,7 +32,7 @@ class Board extends React.Component {
       board.classList.remove("erase");
     }, 1000);
     const cleanGrid = this.state.squares.map(x => "#fff");
-    this.setState({ squares: cleanGrid });
+    this.setState({ squares: cleanGrid, colors: [] });
   }
   createSquares(detail) {
     switch (detail) {
@@ -47,30 +58,15 @@ class Board extends React.Component {
     const currentColor = document.getElementById("colorPicker").value;
     const squares = this.state.squares.slice();
     squares[i] = currentColor;
-    this.setState({ squares: squares });
-  }
-  removeLines() {
-    const squares = document.getElementsByClassName("square");
-    if (this.state.grid === true) {
-      [...squares].forEach(x => (x.style.border = "none"));
-    } else {
-      [...squares].forEach(x => (x.style.border = "1px solid #bebebe"));
+    let newColors = this.state.colors;
+    if (!newColors.includes(currentColor)) {
+      newColors.push(currentColor);
     }
-    this.setState({ grid: !this.state.grid });
-  }
-  changeDetail() {
-    if (this.state.detail < 3) {
-      const newDetail = this.state.detail + 1;
-      this.setState({ detail: newDetail });
-      this.createSquares(newDetail);
-    } else {
-      this.setState({ detail: 1 });
-      this.createSquares(1);
-    }
+    this.setState({ squares: squares, colors: newColors });
   }
   saveFile() {
     if (this.state.grid === true) {
-      this.removeLines();
+      this.toggleGrid();
     }
     const board = document.getElementById("grid");
     html2canvas(board).then(function(canvas) {
@@ -78,6 +74,14 @@ class Board extends React.Component {
         saveAs(blob, "pixel.png");
       });
     });
+  }
+  setColor(color) {
+    const colorSwatch = color;
+    console.log(colorSwatch);
+    document.getElementById("colorPicker").value = colorSwatch;
+  }
+  toggleGrid() {
+    this.setState({ grid: !this.state.grid });
   }
   render() {
     return (
@@ -99,7 +103,7 @@ class Board extends React.Component {
             </button>
             <button
               className="controls_button"
-              onClick={() => this.removeLines()}
+              onClick={() => this.toggleGrid()}
             >
               Grid
             </button>
@@ -119,9 +123,29 @@ class Board extends React.Component {
                 <Square
                   width={this.state.size}
                   height={this.state.size}
+                  border={
+                    this.state.grid === true ? "1px solid #bebebe" : "none"
+                  }
                   colorValue={x}
                   onClick={() => this.handleClick(i)}
                   key={i}
+                />
+              );
+            })}
+          </div>
+        </div>
+        <div className="palette_wrap">
+          <p>Current Palette:</p>
+          <div className="palette_squares">
+            {this.state.colors.map((color, i) => {
+              return (
+                <Square
+                  width="32px"
+                  height="32px"
+                  border="none"
+                  colorValue={color}
+                  onClick={() => this.setColor(color)}
+                  key={i + "p"}
                 />
               );
             })}

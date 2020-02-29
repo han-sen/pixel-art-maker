@@ -1,7 +1,8 @@
 body {
   font-family: "Arial", sans-serif;
   margin: 20px;
-  background-color: #eee;
+  background-color: #bebebe;
+  color: #485167;
 }
 
 ol,
@@ -98,10 +99,8 @@ input {
 }
 
 .square {
-  border: 1px solid #bebebe;
   float: left;
-  /* height: 32px;
-  width: 32px; */
+  cursor: pointer;
   padding: 0;
   margin: 0;
   transition: all 0.75s ease;
@@ -111,15 +110,13 @@ input {
   outline: none;
 }
 
-.kbd-navigation .square:focus {
-  background: #ddd;
-}
-
-.game {
+.palette_wrap {
   display: flex;
-  flex-direction: row;
+  padding: 20px 0px;
+  align-items: flex-end;
+  flex-direction: column;
 }
 
-.game-info {
-  margin-left: 20px;
+.palette_squares {
+  display: flex;
 }

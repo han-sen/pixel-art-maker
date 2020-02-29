@@ -7,7 +7,8 @@ class Square extends React.Component {
         style={{
           backgroundColor: this.props.colorValue,
           width: this.props.width,
-          height: this.props.height
+          height: this.props.height,
+          border: this.props.border
         }}
         className="square"
         onClick={() => this.props.onClick()}
