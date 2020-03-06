@@ -15,6 +15,7 @@ class Board extends React.Component {
       colors: []
     };
   }
+  addSwatch() {}
   changeDetail() {
     if (this.state.detail < 3) {
       const newDetail = this.state.detail + 1;
@@ -52,7 +53,9 @@ class Board extends React.Component {
   fillBoard() {
     const currentColor = document.getElementById("colorPicker").value;
     const filledBoard = this.state.squares.map(x => currentColor);
-    this.setState({ squares: filledBoard });
+    const newColors = this.state.colors;
+    newColors.push(currentColor);
+    this.setState({ squares: filledBoard, colors: newColors });
   }
   handleClick(i) {
     const currentColor = document.getElementById("colorPicker").value;
@@ -64,10 +67,7 @@ class Board extends React.Component {
     }
     this.setState({ squares: squares, colors: newColors });
   }
-  saveFile() {
-    if (this.state.grid === true) {
-      this.toggleGrid();
-    }
+  convertCanvas() {
     const board = document.getElementById("grid");
     html2canvas(board).then(function(canvas) {
       canvas.toBlob(function(blob) {
@@ -75,9 +75,11 @@ class Board extends React.Component {
       });
     });
   }
+  saveFile() {
+    this.convertCanvas();
+  }
   setColor(color) {
     const colorSwatch = color;
-    console.log(colorSwatch);
     document.getElementById("colorPicker").value = colorSwatch;
   }
   toggleGrid() {
@@ -105,7 +107,7 @@ class Board extends React.Component {
               className="controls_button"
               onClick={() => this.toggleGrid()}
             >
-              Grid
+              {this.state.grid === true ? "Grid Off" : "Grid On"}
             </button>
             <button
               className="controls_button detail_button"
