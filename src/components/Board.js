@@ -15,7 +15,6 @@ class Board extends React.Component {
       colors: []
     };
   }
-  addSwatch() {}
   changeDetail() {
     if (this.state.detail < 3) {
       const newDetail = this.state.detail + 1;
@@ -107,7 +106,7 @@ class Board extends React.Component {
               className="controls_button"
               onClick={() => this.toggleGrid()}
             >
-              {this.state.grid === true ? "Grid Off" : "Grid On"}
+              {this.state.grid === true ? "Grid On" : "Grid Off"}
             </button>
             <button
               className="controls_button detail_button"
