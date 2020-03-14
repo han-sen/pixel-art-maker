@@ -1,8 +1,13 @@
 body {
   font-family: "Arial", sans-serif;
-  margin: 20px;
-  background-color: #bebebe;
+  margin: 0px;
+  background-color: #fff;
   color: #485167;
+}
+
+h1 {
+  animation: float 15s ease infinite;
+  padding: 20px;
 }
 
 ol,
@@ -17,16 +22,24 @@ input {
 
 .page_wrap {
   display: flex;
+  height: 100vh;
 }
 
 .col-2 {
   width: 50%;
 }
 
+.instructions {
+  background-color: #bebebe80;
+}
+
+.instructions_wrap {
+  padding: 20px;
+}
+
 .app_wrap {
   display: inline-block;
   padding: 20px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   background-color: white;
   border-radius: 6px;
 }
@@ -49,7 +62,7 @@ input {
   margin: 3px;
   width: 50px;
   height: 50px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,9 +70,12 @@ input {
 
 .controls_button:hover {
   cursor: pointer;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 #colorPicker {
+  cursor: pointer;
   width: 50px;
   border: none;
   background-color: #1976d2;
@@ -89,6 +105,25 @@ input {
 
   24% {
     transform: translateY(-12.56px);
+  }
+  40% {
+    transform: translateY(5.56px);
+  }
+  70% {
+    transform: translateY(-5.28px);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  12% {
+    transform: translateY(-5.89px);
+  }
+
+  24% {
+    transform: translateY(-6.56px);
   }
   40% {
     transform: translateY(5.56px);
