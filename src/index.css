@@ -20,6 +20,14 @@ input {
   background-color: white;
 }
 
+.highlight {
+  color: #88aacd;
+}
+
+.highlight_blue {
+  color: #3872ab;
+}
+
 .page_wrap {
   display: flex;
   height: 100vh;
@@ -32,6 +40,7 @@ input {
 .instructions {
   background-color: #064887;
   color: white;
+  text-align: center;
 }
 
 .instructions_wrap {
@@ -148,9 +157,10 @@ input {
 
 .palette_wrap {
   display: flex;
-  padding: 20px 0px;
+  padding: 0px 0px;
   align-items: flex-end;
   flex-direction: column;
+  margin-bottom: 30px 0px;
 }
 
 .palette_squares {

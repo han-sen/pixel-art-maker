@@ -12,7 +12,7 @@ class Board extends React.Component {
       grid: true,
       detail: 1,
       size: "32px",
-      colors: []
+      colors: [],
     };
   }
   changeDetail() {
@@ -31,7 +31,7 @@ class Board extends React.Component {
     setTimeout(() => {
       board.classList.remove("erase");
     }, 1000);
-    const cleanGrid = this.state.squares.map(x => "#fff");
+    const cleanGrid = this.state.squares.map((x) => "#fff");
     this.setState({ squares: cleanGrid, colors: [] });
   }
   createSquares(detail) {
@@ -51,9 +51,11 @@ class Board extends React.Component {
   }
   fillBoard() {
     const currentColor = document.getElementById("colorPicker").value;
-    const filledBoard = this.state.squares.map(x => currentColor);
+    const filledBoard = this.state.squares.map((x) => currentColor);
     const newColors = this.state.colors;
-    newColors.push(currentColor);
+    if (!newColors.includes(currentColor)) {
+      newColors.push(currentColor);
+    }
     this.setState({ squares: filledBoard, colors: newColors });
   }
   handleClick(i) {
@@ -68,8 +70,8 @@ class Board extends React.Component {
   }
   convertCanvas() {
     const board = document.getElementById("grid");
-    html2canvas(board).then(function(canvas) {
-      canvas.toBlob(function(blob) {
+    html2canvas(board).then(function (canvas) {
+      canvas.toBlob(function (blob) {
         saveAs(blob, "pixel.png");
       });
     });

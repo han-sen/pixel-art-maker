@@ -4,14 +4,28 @@ class Instructions extends React.Component {
   render() {
     return (
       <div className="instructions_wrap">
-        <p>&#8212; This is a React pixel art maker demo.</p>
-        <p>&#8212; Toggle the grid on and off.</p>
         <p>
-          &#8212; Use the 'detail' button to cycle between 1x, 2x, 3x square
-          sizes
+          <span className="highlight_blue">&#172;</span> This is a{" "}
+          <span className="highlight">React pixel art maker demo</span>.
         </p>
-        <p>(note: this will erase any in place pixels)</p>
-        <p>&#8212; Save your work!</p>
+        <p>
+          <span className="highlight_blue">&#172;</span> Toggle the{" "}
+          <span className="highlight">grid</span> on and off.
+        </p>
+        <p>
+          <span className="highlight_blue">&#172;</span> Use the{" "}
+          <span className="highlight">detail</span> button to cycle between 1x,
+          2x, 3x square sizes
+        </p>
+        <p>
+          <span className="highlight">
+            (note: this will erase any in place pixels)
+          </span>
+        </p>
+        <p>
+          <span className="highlight_blue">&#172;</span>{" "}
+          <span className="highlight">Save</span> your work!
+        </p>
       </div>
     );
   }
