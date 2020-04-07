@@ -30,7 +30,8 @@ input {
 }
 
 .instructions {
-  background-color: #bebebe80;
+  background-color: #064887;
+  color: white;
 }
 
 .instructions_wrap {
