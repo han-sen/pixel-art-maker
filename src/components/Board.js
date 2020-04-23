@@ -1,8 +1,7 @@
 import React from "react";
-import html2canvas from "html2canvas";
-import { saveAs } from "file-saver";
 import ColorPicker from "./ColorPicker";
 import Square from "./Square";
+import SaveButton from "./SaveButton";
 
 class Board extends React.Component {
   constructor(props) {
@@ -68,17 +67,6 @@ class Board extends React.Component {
     }
     this.setState({ squares: squares, colors: newColors });
   }
-  convertCanvas() {
-    const board = document.getElementById("grid");
-    html2canvas(board).then(function (canvas) {
-      canvas.toBlob(function (blob) {
-        saveAs(blob, "pixel.png");
-      });
-    });
-  }
-  saveFile() {
-    this.convertCanvas();
-  }
   setColor(color) {
     const colorSwatch = color;
     document.getElementById("colorPicker").value = colorSwatch;
@@ -116,9 +104,6 @@ class Board extends React.Component {
             >
               {this.state.detail === 3 ? "Less Detail" : "More Detail"}
             </button>
-            <button className="controls_button" onClick={() => this.saveFile()}>
-              Save
-            </button>
           </div>
           <div id="grid" className="grid_wrap">
             {this.state.squares.map((x, i) => {
@@ -143,8 +128,8 @@ class Board extends React.Component {
             {this.state.colors.map((color, i) => {
               return (
                 <Square
-                  width="32px"
-                  height="32px"
+                  width="16px"
+                  height="16px"
                   border="none"
                   colorValue={color}
                   onClick={() => this.setColor(color)}
@@ -153,6 +138,7 @@ class Board extends React.Component {
               );
             })}
           </div>
+          <SaveButton />
         </div>
       </section>
     );

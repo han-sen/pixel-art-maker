@@ -1,6 +1,7 @@
 import React from "react";
 import Board from "./Board";
 import Instructions from "./Instructions";
+import GitTab from "./GitTab";
 
 class Canvas extends React.Component {
   render() {
@@ -9,8 +10,9 @@ class Canvas extends React.Component {
         <div className="col-2 instructions">
           <h1>Pixel Art Maker</h1>
           <Instructions />
+          <GitTab />
         </div>
-        <div className="col-2">
+        <div className="col-2 app_container">
           <Board />
         </div>
       </div>
