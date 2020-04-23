@@ -8,11 +8,12 @@
     "@testing-library/user-event": "^7.2.1",
     "file-saver": "^2.0.2",
     "html2canvas": "^1.0.0-rc.5",
+    "kind-of": ">=6.0.3",
+    "minimist": ">=1.2.2",
+    "node-sass": "^4.14.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.1",
-    "minimist": ">=1.2.2",
-    "kind-of": ">=6.0.3"
+    "react-scripts": "3.3.1"
   },
   "scripts": {
     "start": "react-scripts start",

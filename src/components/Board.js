@@ -116,6 +116,9 @@ class Board extends React.Component {
                   }
                   colorValue={x}
                   onClick={() => this.handleClick(i)}
+                  onDragEnter={() => {
+                    this.handleClick(i);
+                  }}
                   key={i}
                 />
               );
