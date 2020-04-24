@@ -3,21 +3,20 @@ import html2canvas from "html2canvas";
 import { saveAs } from "file-saver";
 
 class SaveButton extends React.Component {
-  convertCanvas() {
+  saveFile() {
     const board = document.getElementById("grid");
+    board.style.borderRadius = "0px";
     html2canvas(board).then(function (canvas) {
       canvas.toBlob(function (blob) {
         saveAs(blob, "pixel.png");
       });
     });
-  }
-  saveFile() {
-    this.convertCanvas();
+    board.style.borderRadius = "6px";
   }
   render() {
     return (
       <button className="save_button" onClick={() => this.saveFile()}>
-        Save Art
+        Save Image
       </button>
     );
   }

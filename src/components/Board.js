@@ -7,7 +7,7 @@ class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      squares: Array(144).fill("#fff"),
+      squares: Array(144).fill("rgb(37, 113, 121)"),
       grid: true,
       detail: 1,
       size: "32px",
