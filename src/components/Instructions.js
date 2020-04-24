@@ -14,8 +14,8 @@ class Instructions extends React.Component {
         </p>
         <p>
           <span className="highlight_blue">&#172;</span> Use the{" "}
-          <span className="highlight">detail</span> button to cycle between 1x,
-          2x, 3x square sizes
+          <span className="highlight">detail</span> button to toggle between
+          square sizes.
         </p>
         <p>
           <span className="highlight">

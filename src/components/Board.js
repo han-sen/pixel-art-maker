@@ -15,10 +15,9 @@ class Board extends React.Component {
     };
   }
   changeDetail() {
-    if (this.state.detail < 3) {
-      const newDetail = this.state.detail + 1;
-      this.setState({ detail: newDetail });
-      this.createSquares(newDetail);
+    if (this.state.detail === 1) {
+      this.setState({ detail: 2 });
+      this.createSquares(2);
     } else {
       this.setState({ detail: 1 });
       this.createSquares(1);
@@ -34,18 +33,10 @@ class Board extends React.Component {
     this.setState({ squares: cleanGrid, colors: [] });
   }
   createSquares(detail) {
-    switch (detail) {
-      case 1:
-        this.setState({ squares: Array(144).fill("#fff"), size: "32px" });
-        break;
-      case 2:
-        this.setState({ squares: Array(576).fill("#fff"), size: "16px" });
-        break;
-      case 3:
-        this.setState({ squares: Array(1024).fill("#fff"), size: "12px" });
-        break;
-      default:
-        this.setState({ squares: Array(144).fill("#fff"), size: "32px" });
+    if (detail === 1) {
+      this.setState({ squares: Array(144).fill("#fff"), size: "32px" });
+    } else {
+      this.setState({ squares: Array(576).fill("#fff"), size: "16px" });
     }
   }
   fillBoard() {
@@ -102,7 +93,7 @@ class Board extends React.Component {
               className="controls_button detail_button"
               onClick={() => this.changeDetail()}
             >
-              {this.state.detail === 3 ? "Less Detail" : "More Detail"}
+              {this.state.detail === 2 ? "Less Detail" : "More Detail"}
             </button>
           </div>
           <div id="grid" className="grid_wrap">
@@ -111,7 +102,7 @@ class Board extends React.Component {
                 <Square
                   width={this.state.size}
                   height={this.state.size}
-                  border={
+                  outline={
                     this.state.grid === true ? "1px solid #bebebe" : "none"
                   }
                   colorValue={x}

@@ -24,6 +24,10 @@ input {
   background-color: white;
 }
 
+button {
+  cursor: pointer;
+}
+
 .highlight {
   color: #88aacd;
 }
@@ -152,11 +156,6 @@ input {
   }
 }
 
-.controls_button:hover,
-.save_button:hover {
-  cursor: pointer;
-}
-
 #colorPicker {
   cursor: pointer;
   width: 50px;
@@ -222,9 +221,6 @@ input {
   margin: 0;
   transition: all 0.75s ease;
   outline: none;
-  :hover {
-    cursor: url("./img/paint.png"), auto;
-  }
   :focus {
     outline: none;
   }

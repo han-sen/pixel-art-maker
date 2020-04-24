@@ -1,26 +1,27 @@
 import React from "react";
-import paintBrush from "../img/paint.png";
+import paintBrush from "../img/GitHub-Mark-64px.png";
 
 class Square extends React.Component {
   render() {
     return (
-      <button
+      <div
         draggable="true"
         style={{
           backgroundColor: this.props.colorValue,
           width: this.props.width,
           height: this.props.height,
-          border: this.props.border,
+          outline: this.props.outline,
         }}
         className="square"
         onClick={() => this.props.onClick()}
-        onDragStart={(event) => {
-          var img = document.createElement("img");
-          img.src = { paintBrush };
-          event.dataTransfer.setDragImage(img, 0, 0);
+        onDragStart={(e) => {
+          var dragIcon = document.createElement("img");
+          dragIcon.src = { paintBrush };
+          dragIcon.width = 100;
+          e.dataTransfer.setDragImage(dragIcon, -10, -10);
         }}
         onDragEnter={() => this.props.onDragEnter()}
-      ></button>
+      ></div>
     );
   }
 }
