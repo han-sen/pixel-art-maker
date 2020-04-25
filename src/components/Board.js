@@ -7,7 +7,7 @@ class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      squares: Array(144).fill("rgb(37, 113, 121)"),
+      squares: Array(121).fill("rgb(37, 113, 121)"),
       grid: true,
       detail: 1,
       size: "32px",
@@ -34,13 +34,13 @@ class Board extends React.Component {
   }
   createSquares(detail) {
     if (detail === 1) {
-      this.setState({ squares: Array(144).fill("#fff"), size: "32px" });
+      this.setState({ squares: Array(121).fill("#fff"), size: "32px" });
     } else {
-      this.setState({ squares: Array(576).fill("#fff"), size: "16px" });
+      this.setState({ squares: Array(484).fill("#fff"), size: "16px" });
     }
   }
   fillBoard() {
-    const currentColor = document.getElementById("colorPicker").value;
+    const currentColor = document.getElementById("hexVal").value;
     const filledBoard = this.state.squares.map((x) => currentColor);
     const newColors = this.state.colors;
     if (!newColors.includes(currentColor)) {
@@ -49,7 +49,7 @@ class Board extends React.Component {
     this.setState({ squares: filledBoard, colors: newColors });
   }
   handleClick(i) {
-    const currentColor = document.getElementById("colorPicker").value;
+    const currentColor = document.getElementById("hexVal").value;
     const squares = this.state.squares.slice();
     squares[i] = currentColor;
     let newColors = this.state.colors;
@@ -60,7 +60,7 @@ class Board extends React.Component {
   }
   setColor(color) {
     const colorSwatch = color;
-    document.getElementById("colorPicker").value = colorSwatch;
+    document.getElementById("hexVal").value = colorSwatch;
   }
   toggleGrid() {
     this.setState({ grid: !this.state.grid });
@@ -68,9 +68,13 @@ class Board extends React.Component {
   render() {
     return (
       <section className="app_wrap">
+        {/* <ColorPicker /> */}
+
         <div className="app_wrap_inner">
           <div className="controls_wrap">
-            <ColorPicker />
+            <button className="color_button">
+              <ColorPicker />
+            </button>
             <button
               className="controls_button"
               onClick={() => this.fillBoard()}
