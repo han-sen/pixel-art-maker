@@ -7,7 +7,7 @@ class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      squares: Array(121).fill("rgb(37, 113, 121)"),
+      squares: Array(121).fill("#257178"),
       grid: true,
       detail: 1,
       size: "32px",
@@ -40,7 +40,8 @@ class Board extends React.Component {
     }
   }
   fillBoard() {
-    const currentColor = document.getElementById("hexVal").value;
+    const currentColor = document.getElementById("preview").style
+      .backgroundColor;
     const filledBoard = this.state.squares.map((x) => currentColor);
     const newColors = this.state.colors;
     if (!newColors.includes(currentColor)) {
@@ -49,7 +50,8 @@ class Board extends React.Component {
     this.setState({ squares: filledBoard, colors: newColors });
   }
   handleClick(i) {
-    const currentColor = document.getElementById("hexVal").value;
+    const currentColor = document.getElementById("preview").style
+      .backgroundColor;
     const squares = this.state.squares.slice();
     squares[i] = currentColor;
     let newColors = this.state.colors;
@@ -60,7 +62,7 @@ class Board extends React.Component {
   }
   setColor(color) {
     const colorSwatch = color;
-    document.getElementById("hexVal").value = colorSwatch;
+    document.getElementById("preview").style.backgroundColor = colorSwatch;
   }
   toggleGrid() {
     this.setState({ grid: !this.state.grid });
@@ -68,8 +70,6 @@ class Board extends React.Component {
   render() {
     return (
       <section className="app_wrap">
-        {/* <ColorPicker /> */}
-
         <div className="app_wrap_inner">
           <div className="controls_wrap">
             <button className="color_button">
@@ -121,13 +121,14 @@ class Board extends React.Component {
           </div>
         </div>
         <div className="palette_wrap">
+          <SaveButton />
           <p>Current Palette:</p>
           <div className="palette_squares">
             {this.state.colors.map((color, i) => {
               return (
                 <Square
-                  width="16px"
-                  height="16px"
+                  width="24px"
+                  height="24px"
                   border="none"
                   colorValue={color}
                   onClick={() => this.setColor(color)}
@@ -136,7 +137,6 @@ class Board extends React.Component {
               );
             })}
           </div>
-          <SaveButton />
         </div>
       </section>
     );

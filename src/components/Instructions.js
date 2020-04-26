@@ -5,17 +5,19 @@ class Instructions extends React.Component {
     return (
       <div className="instructions_wrap">
         <p>
-          <span className="highlight_blue">&#172;</span> This is a{" "}
-          <span className="highlight">React pixel art maker demo</span>.
+          This is a<span className="highlight"> React </span>pixel art maker
+          demo.
         </p>
         <p>
-          <span className="highlight_blue">&#172;</span> Toggle the{" "}
-          <span className="highlight">grid</span> on and off.
+          <span className="highlight">Click</span> and{" "}
+          <span className="highlight">drag</span> to paint the squares.
         </p>
         <p>
-          <span className="highlight_blue">&#172;</span> Use the{" "}
-          <span className="highlight">detail</span> button to toggle between
-          square sizes.
+          Toggle the <span className="highlight">grid</span> on and off.
+        </p>
+        <p>
+          Use the <span className="highlight">detail</span> button to toggle
+          between square sizes.
         </p>
         <p>
           <span className="highlight">
@@ -23,7 +25,6 @@ class Instructions extends React.Component {
           </span>
         </p>
         <p>
-          <span className="highlight_blue">&#172;</span>{" "}
           <span className="highlight">Save</span> your work!
         </p>
       </div>

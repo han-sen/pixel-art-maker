@@ -16,7 +16,7 @@ class SaveButton extends React.Component {
   render() {
     return (
       <button className="save_button" onClick={() => this.saveFile()}>
-        Save Image
+        Save Art
       </button>
     );
   }
