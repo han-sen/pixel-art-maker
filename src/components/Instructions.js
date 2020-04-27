@@ -13,10 +13,7 @@ class Instructions extends React.Component {
           <span className="highlight">drag</span> to paint the squares.
         </p>
         <p>
-          Toggle the <span className="highlight">grid</span> on and off.
-        </p>
-        <p>
-          Use the <span className="highlight">detail</span> button to toggle
+          Use the <span className="highlight">detail</span> button to switch
           between square sizes.
         </p>
         <p>

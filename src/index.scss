@@ -1,7 +1,12 @@
 /******** VARIABLES *******/
-$breakpoint: 1000px;
-$breakpoint-sm: 768px;
+$breakpoint: 768px;
+$breakpoint-sm: 600px;
+$breakpoint-lg: 769px;
 
+/*** COLORS ***/
+$blue-sky: #1b76d5;
+$blue-light: #bbdefc;
+$blue-dark: #094887;
 body {
   font-family: "Arial", sans-serif;
   margin: 0px;
@@ -29,11 +34,7 @@ button {
 }
 
 .highlight {
-  color: #52a1ed;
-}
-
-.highlight_blue {
-  color: #3872ab;
+  color: $blue-light;
 }
 
 .page_wrap {
@@ -50,14 +51,24 @@ button {
   }
 }
 
-@media screen and (min-width: $breakpoint) {
+@media screen and (min-width: $breakpoint-lg) {
   .col-2 {
-    width: 50%;
+    padding: 20px;
+  }
+  .instructions {
+    width: 40%;
+    background-image: url("./img/mountains-re.png");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: contain;
+  }
+  .app_container {
+    width: 70%;
   }
 }
 
 .instructions {
-  background-color: #064887;
+  background-color: $blue-sky;
   color: white;
   text-align: center;
 }
@@ -67,7 +78,7 @@ button {
 }
 
 .app_container {
-  background-color: #bbdefb;
+  background-color: $blue-light;
   display: flex;
   justify-content: center;
 }
@@ -115,7 +126,7 @@ button {
 .color_button,
 .controls_button {
   border-radius: 3px;
-  background-color: #1976d2;
+  background-color: $blue-sky;
   border: none;
   margin: 10px 10px 0px 10px;
   width: 50px;
@@ -168,7 +179,7 @@ button {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border-radius: 6px;
   align-self: center;
-  @media screen and (max-width: $breakpoint) {
+  @media screen and (max-width: $breakpoint-sm) {
     border-radius: 0px 0px 6px 6px;
   }
 }
@@ -248,7 +259,7 @@ button {
 .save_button {
   padding: 10px 20px;
   border-radius: 3px;
-  background-color: #1a76d3;
+  background-color: $blue-sky;
   color: #fff;
   border: none;
   outline: none;
@@ -261,7 +272,7 @@ button {
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: #bbdefb;
+  background-color: $blue-light;
   padding: 20px;
   clip-path: polygon(0 0, 100% 100%, 0% 100%);
   height: 50px;
@@ -294,7 +305,7 @@ button {
   position: absolute;
   width: 310px;
   z-index: 999;
-  transform: translateX(-13px);
+  transform: translateX(-12px);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   p {
     text-align: left;
