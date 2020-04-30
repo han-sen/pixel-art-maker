@@ -1,5 +1,6 @@
 import React from "react";
 import ColorPicker from "./ColorPicker";
+import Palette from "./Palette";
 import Square from "./Square";
 import SaveButton from "./SaveButton";
 
@@ -35,7 +36,7 @@ class Board extends React.Component {
   createSquares(detail) {
     if (detail === 1) {
       this.setState({ squares: Array(121).fill("#fff"), size: "32px" });
-    } else {
+    } else if (detail === 2) {
       this.setState({ squares: Array(484).fill("#fff"), size: "16px" });
     }
   }
@@ -120,24 +121,8 @@ class Board extends React.Component {
             })}
           </div>
         </div>
-        <div className="palette_wrap">
-          <SaveButton />
-          <p>Current Palette:</p>
-          <div className="palette_squares">
-            {this.state.colors.map((color, i) => {
-              return (
-                <Square
-                  width="24px"
-                  height="24px"
-                  border="none"
-                  colorValue={color}
-                  onClick={() => this.setColor(color)}
-                  key={i + "p"}
-                />
-              );
-            })}
-          </div>
-        </div>
+        <Palette colors={this.state.colors} setColor={this.setColor} />
+        <SaveButton />
       </section>
     );
   }

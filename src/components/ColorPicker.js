@@ -8,42 +8,35 @@ class ColorPicker extends React.Component {
     this.state = {
       active: false,
       basicColors: [
-        "#f4f5ef",
-        "#f8c7a4",
-        "#e784a8",
-        "#eb9d45",
-        "#bb9a3e",
-        "#f6e455",
-        "#c8dbdf",
-        "#a146aa",
-        "#d74d4c",
-        "#a65d35",
-        "#8fcb62",
-        "#35884e",
-        "#a0abb1",
-        "#962f2c",
-        "#682d2c",
-        "#85dfeb",
-        "#339ca3",
-        "#1b4c5a",
-        "#5e6a82",
-        "#191023",
-        "#72adee",
-        "#435edb",
-        "#474394",
-        "#322d4d",
+        "#000000",
+        "#f80000",
+        "#c868e8",
+        "#10c0c8",
+        "#2868c0",
+        "#089050",
+        "#70d038",
+        "#f8f858",
+        "#f8a830",
+        "#787878",
+        "#c0c0c0",
+        "#ffffff",
       ],
     };
   }
   componentDidMount() {
-    document.getElementById("preview").style.backgroundColor = "#ffffff";
+    this.drawCanvas(100, 100);
+  }
+  drawCanvas(saturation, brightness) {
+    document.getElementById("preview").style.backgroundColor =
+      "rgb(28, 170, 225)";
     const canvas = document.getElementById("picker");
     const ctx = canvas.getContext("2d");
+    ctx.filter = `saturate(${saturation}%) brightness(${brightness}%)`;
     const image = new Image();
     const imageSrc = colorSquare;
     image.src = imageSrc;
     image.onload = function () {
-      ctx.drawImage(image, 0, 0, 290, 290); // draw the image on the canvas
+      ctx.drawImage(image, 0, 0, 290, 290);
     };
   }
   enterColor(e) {
@@ -69,6 +62,11 @@ class ColorPicker extends React.Component {
     rgb.value = `rgb(${pixel[0]},${pixel[1]},${pixel[2]})`;
     const hex = document.getElementById("hexVal");
     hex.value = `#${`0000${dColor.toString(16)}`.substr(-6)}`;
+  }
+  colorSettings() {
+    const saturation = document.getElementById("saturationSlider").value;
+    const brightness = document.getElementById("brightnessSlider").value;
+    this.drawCanvas(saturation, brightness);
   }
   setColor(color) {
     const colorSwatch = color;
@@ -112,6 +110,32 @@ class ColorPicker extends React.Component {
                 type="text"
                 id="hexVal"
                 onKeyDown={(e) => this.enterColor(e)}
+              />
+            </div>
+          </div>
+          <div className="slider_wrap">
+            <div>
+              <label>Saturation</label>
+              <input
+                type="range"
+                min="1"
+                max="100"
+                defaultValue="100"
+                className="slider"
+                id="saturationSlider"
+                onInput={() => this.colorSettings()}
+              />
+            </div>
+            <div>
+              <label>Brightness</label>
+              <input
+                type="range"
+                min="1"
+                max="100"
+                defaultValue="100"
+                className="slider"
+                id="brightnessSlider"
+                onInput={() => this.colorSettings()}
               />
             </div>
           </div>
