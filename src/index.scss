@@ -14,7 +14,11 @@ $grey-translucent: #efecece3;
 /*** UTIL ***/
 
 .tilted {
-  transform: rotate(32deg);
+  transform: rotate(45deg);
+  transition: transform 0.2s ease-in-out;
+}
+.tilted:hover {
+  transform: rotate(0deg);
 }
 
 .highlight {
@@ -55,14 +59,14 @@ button {
     padding: 20px;
   }
   .instructions {
-    width: 30%;
+    width: 25%;
     background-image: url("./img/mountains-re.png");
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: contain;
   }
   .app_container {
-    width: 70%;
+    width: 75%;
   }
 }
 
@@ -91,6 +95,13 @@ button {
 .app_wrap_inner {
   display: flex;
   margin-bottom: 20px;
+}
+
+@media screen and (max-width: $breakpoint) {
+  .app_wrap {
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
 }
 
 @media screen and (max-width: $breakpoint-sm) {
@@ -242,6 +253,7 @@ button {
   align-items: center;
   margin-bottom: 10px;
   margin-top: 10px;
+  transition: transform 0.2s ease-in-out;
   p {
     margin: 0;
     padding: 0px;
@@ -253,6 +265,12 @@ button {
   }
   svg {
     fill: $blue-dark;
+  }
+}
+
+.palette_header:hover {
+  img {
+    transform: rotate(0deg);
   }
 }
 
@@ -274,7 +292,7 @@ button {
   color: #1b76d5;
   border: 1px solid #1b76d5;
   font-size: 12px;
-  /* border-bottom: 2px solid #1a75d5; */
+  border-bottom: 2px solid #1a75d5;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -288,32 +306,36 @@ button {
   background-position: right 0.7em top 50%, 0 0;
   background-size: 0.65em auto, 100%;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .gitTab_wrap {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  background-color: $blue-light;
+  top: 0;
+  right: 0;
+  background-color: $blue-sky;
   padding: 20px;
-  clip-path: polygon(0 0, 100% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 100%, 100% 0);
   height: 50px;
   width: 50px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  img:hover {
+    transform: rotate(0deg);
+  }
   img {
     width: 32px;
     position: absolute;
-    bottom: 10px;
-    left: 10px;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    transform: rotate(45deg);
+    transition: transform 0.2s ease-in-out;
   }
 }
 
 @media screen and (max-width: $breakpoint) {
   .gitTab_wrap {
-    clip-path: polygon(0 0, 0% 100%, 100% 0);
-    top: 0;
-  }
-  .gitTab_wrap img {
-    top: 10px;
+    background-color: $blue-dark;
   }
 }
 

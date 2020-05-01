@@ -10,11 +10,11 @@ class Canvas extends React.Component {
         <div className="col-2 instructions">
           <h1>Pixel Art Maker</h1>
           <Instructions />
-          <GitTab />
         </div>
         <div className="col-2 app_container">
           <Board />
         </div>
+        <GitTab />
       </div>
     );
   }

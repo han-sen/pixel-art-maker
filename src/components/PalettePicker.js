@@ -17,7 +17,7 @@ class PalettePicker extends React.Component {
       <div className="palette_wrap">
         <div className="palette_header">
           <img src={paletteIcon} alt="palette" />
-          <label>Palette:</label>
+          <label>Palette</label>
           <select
             id="palette_select"
             defaultValue="Starter Colors"
