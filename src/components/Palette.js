@@ -7,7 +7,7 @@ class Palette extends React.Component {
     return (
       <div className="palette_wrap">
         <div className="palette_header">
-          <img src={brushIcon} alt="palette" />
+          <img src={brushIcon} alt="palette" className="tilted" />
           <p>Colors Used</p>
         </div>
         <div className="palette_squares">

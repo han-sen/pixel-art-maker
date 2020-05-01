@@ -1,6 +1,6 @@
 export const colorSets = [
   {
-    name: "Starter Colors",
+    name: "Basics",
     colors: [
       "#000000",
       "#f80000",
@@ -47,35 +47,6 @@ export const colorSets = [
     ],
   },
   {
-    name: "Soft Pastel",
-    colors: [
-      "#000000",
-      "#6f6776",
-      "#9a9a97",
-      "#c5ccb8",
-      "#8b5580",
-      "#c38890",
-      "#a593a5",
-      "#666092",
-      "#9a4f50",
-      "#c28d75",
-      "#7ca1c0",
-      "#416aa3",
-      "#8d6268",
-      "#be955c",
-      "#68aca9",
-      "#387080",
-      "#6e6962",
-      "#93a167",
-      "#6eaa78",
-      "#557064",
-      "#9d9f7f",
-      "#7e9e99",
-      "#5d6872",
-      "#433455",
-    ],
-  },
-  {
     name: "Commodore",
     colors: [
       "#000000",
@@ -116,5 +87,39 @@ export const colorSets = [
       "#FF77A8",
       "#FFCCAA",
     ],
+  },
+  {
+    name: "Solarized",
+    colors: [
+      "#0d2b45",
+      "#203c56",
+      "#544e68",
+      "#8d697a",
+      "#d08159",
+      "#ffaa5e",
+      "#ffd4a3",
+      "#ffecd6",
+    ],
+  },
+  {
+    name: "2-Bit",
+    colors: ["#000000", "#676767", "#b6b6b6", "#ffffff"],
+  },
+  {
+    name: "Sushi",
+    colors: [
+      "#15191a",
+      "#8a4c58",
+      "#d96275",
+      "#e6b8c1",
+      "#456b73",
+      "#4b97a6",
+      "#a5bdc2",
+      "#fff5f7",
+    ],
+  },
+  {
+    name: "Greenboy",
+    colors: ["#081820", "#346856", "#88c070", "#e0f8d0"],
   },
 ];
