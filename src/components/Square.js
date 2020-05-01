@@ -26,4 +26,10 @@ class Square extends React.Component {
   }
 }
 
+Square.defaultProps = {
+  onDragEnter: () => {
+    return false;
+  },
+};
+
 export default Square;

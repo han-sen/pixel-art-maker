@@ -1,6 +1,7 @@
 import React from "react";
 import html2canvas from "html2canvas";
 import { saveAs } from "file-saver";
+import saveIcon from "../img/save.svg";
 
 class SaveButton extends React.Component {
   saveFile() {
@@ -15,11 +16,10 @@ class SaveButton extends React.Component {
   }
   render() {
     return (
-      <div className="save_wrap">
-        <button className="save_button" onClick={() => this.saveFile()}>
-          Save Art
-        </button>
-      </div>
+      <button className="controls_button" onClick={() => this.saveFile()}>
+        <img src={saveIcon} alt="save" />
+        Save
+      </button>
     );
   }
 }

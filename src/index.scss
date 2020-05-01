@@ -7,8 +7,9 @@ $breakpoint-lg: 769px;
 $blue-sky: #1b76d5;
 $blue-light: #bbdefc;
 $blue-dark: #094887;
-$grey: #485167;
+$grey: #586673;
 $grey-light: #efecec;
+$grey-translucent: #efecece3;
 
 body {
   font-family: "Arial", sans-serif;
@@ -59,7 +60,7 @@ button {
     background-size: contain;
   }
   .app_container {
-    width: 70%;
+    width: 60%;
   }
 }
 
@@ -88,6 +89,7 @@ button {
 
 .app_wrap_inner {
   display: flex;
+  margin-bottom: 20px;
 }
 
 @media screen and (max-width: $breakpoint-sm) {
@@ -117,6 +119,11 @@ button {
 .controls_button {
   position: relative;
   overflow: hidden;
+  img {
+    width: 12px;
+    height: 12px;
+    margin-bottom: 5px;
+  }
 }
 
 .color_button,
@@ -128,6 +135,7 @@ button {
   width: 50px;
   height: 50px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   color: white;
@@ -209,6 +217,8 @@ button {
   margin: 0;
   transition: all 0.75s ease;
   outline: none;
+  min-width: 14px;
+  flex-grow: 1;
   :focus {
     outline: none;
   }
@@ -220,23 +230,23 @@ button {
 
 .palette_wrap {
   display: flex;
-  margin-top: 20px;
-  padding: 0px 0px;
+  margin-top: 10px;
   align-items: flex-end;
   flex-direction: column;
-  color: #586673;
+  color: $grey;
 }
 
 .palette_header {
   display: flex;
+  align-items: center;
   margin-bottom: 10px;
   p {
     margin: 0;
     padding: 0px;
   }
   img {
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
     margin-right: 6px;
   }
   svg {
@@ -249,23 +259,18 @@ button {
   flex-direction: row-reverse;
   flex-wrap: wrap;
   min-height: 24px;
+  max-width: 352px;
 }
 
-.save_wrap {
-  display: flex;
-  justify-content: flex-end;
+.palette_selected {
+  width: 100%;
 }
 
-.save_button {
-  padding: 10px 20px;
-  border-radius: 3px;
-  background-color: $blue-sky;
-  color: #fff;
+#palette_select {
+  background: none;
+  color: $grey;
   border: none;
-  outline: none;
-  position: relative;
-  overflow: hidden;
-  margin-top: 20px;
+  font-size: 1em;
 }
 
 .gitTab_wrap {
@@ -298,7 +303,7 @@ button {
 /* colorpicker styles */
 .colorpicker {
   flex-direction: column;
-  background-color: $grey-light;
+  background-color: $grey-translucent;
   border-radius: 0px 6px 6px 6px;
   color: $grey;
   font-size: 12px;
@@ -376,24 +381,16 @@ button {
 }
 
 #brightnessSlider::-webkit-slider-thumb {
-  // -webkit-appearance: none;
-  // appearance: none;
   width: 14px;
   height: 14px;
   border: 0;
-  background-image: url("./img/sun.svg");
-  background-repeat: no-repeat;
   cursor: pointer;
 }
 
 #saturationSlider::-webkit-slider-thumb {
-  // -webkit-appearance: none;
-  // appearance: none;
   width: 14px;
   height: 14px;
   border: 0;
-  background-image: url("./img/saturation.svg");
-  background-repeat: no-repeat;
   cursor: pointer;
 }
 

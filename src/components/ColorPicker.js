@@ -1,6 +1,5 @@
 import React from "react";
 import colorSquare from "../img/colorSquare.png";
-import Square from "./Square";
 
 class ColorPicker extends React.Component {
   constructor(props) {
@@ -24,11 +23,11 @@ class ColorPicker extends React.Component {
     };
   }
   componentDidMount() {
+    document.getElementById("preview").style.backgroundColor =
+      "rgb(28, 170, 225)";
     this.drawCanvas(100, 100);
   }
   drawCanvas(saturation, brightness) {
-    document.getElementById("preview").style.backgroundColor =
-      "rgb(28, 170, 225)";
     const canvas = document.getElementById("picker");
     const ctx = canvas.getContext("2d");
     ctx.filter = `saturate(${saturation}%) brightness(${brightness}%)`;
@@ -139,7 +138,7 @@ class ColorPicker extends React.Component {
               />
             </div>
           </div>
-          <p>Starter Colors:</p>
+          {/* <p>Starter Colors:</p>
 
           <div className="palette_squares">
             {this.state.basicColors.map((color, i) => {
@@ -154,7 +153,7 @@ class ColorPicker extends React.Component {
                 />
               );
             })}
-          </div>
+          </div> */}
         </div>
       </div>
     );

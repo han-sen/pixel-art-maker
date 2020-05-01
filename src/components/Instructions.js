@@ -13,13 +13,8 @@ class Instructions extends React.Component {
           <span className="highlight">drag</span> to paint the squares.
         </p>
         <p>
-          Use the <span className="highlight">detail</span> button to switch
-          between square sizes.
-        </p>
-        <p>
-          <span className="highlight">
-            (note: this will erase any in place pixels)
-          </span>
+          <span className="highlight">Load</span> a{" "}
+          <span className="highlight">palette</span> to for inspiration.
         </p>
         <p>
           <span className="highlight">Save</span> your work!

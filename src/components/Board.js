@@ -1,28 +1,21 @@
 import React from "react";
 import ColorPicker from "./ColorPicker";
 import Palette from "./Palette";
+import PalettePicker from "./PalettePicker";
 import Square from "./Square";
 import SaveButton from "./SaveButton";
+import fillIcon from "../img/fill.svg";
+import clearIcon from "../img/clear.svg";
+import gridIcon from "../img/grid.svg";
 
 class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      squares: Array(121).fill("#257178"),
+      squares: Array(484).fill("#257178"),
       grid: true,
-      detail: 1,
-      size: "32px",
       colors: [],
     };
-  }
-  changeDetail() {
-    if (this.state.detail === 1) {
-      this.setState({ detail: 2 });
-      this.createSquares(2);
-    } else {
-      this.setState({ detail: 1 });
-      this.createSquares(1);
-    }
   }
   clearGrid() {
     const board = document.getElementById("grid");
@@ -32,13 +25,6 @@ class Board extends React.Component {
     }, 1000);
     const cleanGrid = this.state.squares.map((x) => "#fff");
     this.setState({ squares: cleanGrid, colors: [] });
-  }
-  createSquares(detail) {
-    if (detail === 1) {
-      this.setState({ squares: Array(121).fill("#fff"), size: "32px" });
-    } else if (detail === 2) {
-      this.setState({ squares: Array(484).fill("#fff"), size: "16px" });
-    }
   }
   fillBoard() {
     const currentColor = document.getElementById("preview").style
@@ -80,36 +66,34 @@ class Board extends React.Component {
               className="controls_button"
               onClick={() => this.fillBoard()}
             >
+              <img src={fillIcon} alt="fill" />
               Fill
             </button>
             <button
               className="controls_button"
               onClick={() => this.clearGrid()}
             >
+              <img src={clearIcon} alt="clear" />
               Clear
             </button>
             <button
               className="controls_button"
               onClick={() => this.toggleGrid()}
             >
-              {this.state.grid === true ? "Grid On" : "Grid Off"}
+              <img src={gridIcon} alt="grid" />
+              {this.state.grid === true ? "On" : "Off"}
             </button>
-            <button
-              className="controls_button detail_button"
-              onClick={() => this.changeDetail()}
-            >
-              {this.state.detail === 2 ? "Less Detail" : "More Detail"}
-            </button>
+            <SaveButton />
           </div>
           <div id="grid" className="grid_wrap">
             {this.state.squares.map((x, i) => {
               return (
                 <Square
-                  width={this.state.size}
-                  height={this.state.size}
                   outline={
                     this.state.grid === true ? "1px solid #bebebe" : "none"
                   }
+                  height="16px"
+                  width="16px"
                   colorValue={x}
                   onClick={() => this.handleClick(i)}
                   onDragEnter={() => {
@@ -122,7 +106,7 @@ class Board extends React.Component {
           </div>
         </div>
         <Palette colors={this.state.colors} setColor={this.setColor} />
-        <SaveButton />
+        <PalettePicker setColor={this.setColor} />
       </section>
     );
   }

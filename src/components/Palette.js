@@ -1,14 +1,14 @@
 import React from "react";
 import Square from "./Square";
-import paletteIcon from "../img/palette.svg";
+import brushIcon from "../img/brush-solid.svg";
 
 class Palette extends React.Component {
   render() {
     return (
       <div className="palette_wrap">
         <div className="palette_header">
-          <img src={paletteIcon} alt="palette" />
-          <p>Current Palette</p>
+          <img src={brushIcon} alt="palette" />
+          <p>Colors Used</p>
         </div>
         <div className="palette_squares">
           {this.props.colors.map((color, i) => {
