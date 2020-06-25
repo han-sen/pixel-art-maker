@@ -12,4 +12,4 @@ Then run the app with
 
 # CURRENTLY WORKING ON
 
-Dynamically resizing the canvas grid based on screensize
+Adding functionality to re-size the canvas for bigger screens
