@@ -1,4 +1,6 @@
 import React from "react";
+import gitIcon from "../img/GitHub-Mark-64px.png";
+
 
 class Instructions extends React.Component {
   render() {
@@ -18,6 +20,12 @@ class Instructions extends React.Component {
         <p>
           <span className="highlight">Save</span> your work!
         </p>
+        <p>
+        <a class="gitTab_wrap" href="https://github.com/han-sen/pixel-art-maker">
+          <img src={gitIcon} alt="github" />
+        </a>
+        </p>
+
       </div>
     );
   }
