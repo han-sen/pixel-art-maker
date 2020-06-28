@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4112557ad8bb1e078b837a203c7eaa86",
+    "revision": "2ad9f1a81668de874bc09734ac450377",
     "url": "/pixel-art-maker/index.html"
   },
   {
-    "revision": "6036f2d377872a3b27ca",
-    "url": "/pixel-art-maker/static/css/main.feddb11e.chunk.css"
+    "revision": "1fa36b33bfa92a6fbe72",
+    "url": "/pixel-art-maker/static/css/main.a3f8723b.chunk.css"
   },
   {
-    "revision": "a5474473dd51ba2bef88",
-    "url": "/pixel-art-maker/static/js/2.8b7a226b.chunk.js"
+    "revision": "feea121fda143433db71",
+    "url": "/pixel-art-maker/static/js/2.784b0749.chunk.js"
   },
   {
-    "revision": "6b58f50c32f9147edd9c978cbc52e417",
-    "url": "/pixel-art-maker/static/js/2.8b7a226b.chunk.js.LICENSE.txt"
+    "revision": "462f991c1d2ef16102b314f225132ac4",
+    "url": "/pixel-art-maker/static/js/2.784b0749.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "6036f2d377872a3b27ca",
-    "url": "/pixel-art-maker/static/js/main.f2dba142.chunk.js"
+    "revision": "1fa36b33bfa92a6fbe72",
+    "url": "/pixel-art-maker/static/js/main.19e32a3b.chunk.js"
   },
   {
     "revision": "735dfc64c087a709e7bb",
