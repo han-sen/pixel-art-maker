@@ -21,7 +21,7 @@ class Instructions extends React.Component {
           <span className="highlight">Save</span> your work!
         </p>
         <p>
-        <a class="gitTab_wrap" href="https://github.com/han-sen/pixel-art-maker">
+        <a className="gitTab_wrap" href="https://github.com/han-sen/pixel-art-maker">
           <img src={gitIcon} alt="github" />
         </a>
         </p>

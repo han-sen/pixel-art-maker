@@ -7,6 +7,7 @@ $breakpoint-lg: 769px;
 $blue-sky: #1b76d5;
 $blue-light: #bbdefc;
 $blue-dark: #094887;
+$blue-midnight: #0a243f;
 $grey: #586673;
 $grey-light: #efecec;
 $grey-translucent: #efecece3;
@@ -71,7 +72,7 @@ button {
 }
 
 .instructions {
-  background-color: $blue-sky;
+  background-color: $blue-midnight;
   color: white;
   text-align: center;
 }
