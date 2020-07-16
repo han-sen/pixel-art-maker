@@ -12,4 +12,5 @@ Then run the app with
 
 # CURRENTLY WORKING ON
 
-Adding functionality to re-size the canvas for bigger screens
+- Adding functionality to re-size the canvas for bigger screens
+- Removing browser default icon on drag event
