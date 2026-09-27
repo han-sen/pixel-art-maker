@@ -1,4 +1,9 @@
-export const colorSets = [
+export type ColorSet = {
+  name: string;
+  colors: readonly string[];
+};
+
+export const colorSets: readonly ColorSet[] = [
   {
     name: "Basics",
     colors: [
