@@ -189,6 +189,7 @@ button {
 }
 
 .grid_wrap {
+  touch-action: none;
   width: 352px;
   height: 352px;
   background-color: white;
@@ -412,6 +413,8 @@ button {
 
 .preview {
   background-color: #ffffff;
+  border: none;
+  padding: 0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   cursor: pointer;
   height: 25px;
