@@ -5,7 +5,7 @@ export default function App() {
   return (
     <div className="page_wrap">
       <div className="col-2 instructions">
-        <h1>Pixel Art Maker</h1>
+        <h1>Bit Easel</h1>
         <Instructions />
       </div>
       <div className="col-2 app_container">

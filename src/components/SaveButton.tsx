@@ -1,29 +1,28 @@
-import type { RefObject } from "react";
-import html2canvas from "html2canvas";
+import { exportPng } from "../lib/pixels";
 import saveIcon from "../img/save.svg";
 
 type SaveButtonProps = {
-  target: RefObject<HTMLElement | null>;
+  squares: readonly string[];
+  gridSize: number;
+  /** Output pixels per board cell; 1 gives a true-size sprite. */
+  scale?: number;
   filename?: string;
 };
 
 export default function SaveButton({
-  target,
+  squares,
+  gridSize,
+  scale = 32,
   filename = "pixel.png",
 }: SaveButtonProps) {
   const save = async () => {
-    const el = target.current;
-    if (!el) return;
-    const canvas = await html2canvas(el, {
-      // Square off the corners in the snapshot only, not the live board.
-      onclone: (_doc, clone) => {
-        clone.style.borderRadius = "0";
-      },
-    });
+    const blob = await exportPng(squares, gridSize, scale);
+    const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
-    link.href = canvas.toDataURL("image/png");
+    link.href = url;
     link.download = filename;
     link.click();
+    URL.revokeObjectURL(url);
   };
 
   return (
