@@ -20,7 +20,7 @@ export default function Instructions() {
       <p>
         <a
           className="gitTab_wrap"
-          href="https://github.com/han-sen/pixel-art-maker"
+          href="https://github.com/han-sen/bit-easel"
         >
           <img src={gitIcon} alt="github" />
         </a>

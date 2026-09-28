@@ -1,8 +1,8 @@
-# Pixel Art Maker
+# Bit Easel
 
-Live demo: https://han-sen.github.io/pixel-art-maker/
+Live demo: https://han-sen.github.io/bit-easel/
 
-Clone the repo, cd into Pixel-Art-Maker and install with
+Clone the repo, cd into bit-easel and install with
 
 `npm i`
 
@@ -10,7 +10,7 @@ Then run the dev server with
 
 `npm run dev`
 
-and open http://localhost:5173/pixel-art-maker/
+and open http://localhost:5173/bit-easel/
 
 Built with React 19, TypeScript and Vite. `npm run build` type-checks and
 builds to `dist/`; `npm run deploy` publishes that to GitHub Pages.

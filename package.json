@@ -1,9 +1,9 @@
 {
-  "name": "pixel-art-maker",
+  "name": "bit-easel",
   "version": "0.2.0",
   "private": true,
   "type": "module",
-  "homepage": "https://han-sen.github.io/pixel-art-maker/",
+  "homepage": "https://han-sen.github.io/bit-easel/",
   "scripts": {
     "dev": "vite",
     "start": "vite",
