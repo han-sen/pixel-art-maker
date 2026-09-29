@@ -1,14 +1,12 @@
 import Board from "./components/Board";
-import Instructions from "./components/Instructions";
 
 export default function App() {
   return (
     <div className="page_wrap">
-      <div className="col-2 instructions">
-        <h1>Bit Easel</h1>
-        <Instructions />
-      </div>
-      <div className="col-2 app_container">
+      <div className="app_container">
+        <div className="brand_wrap">
+          <h1>Bit Easel</h1>
+        </div>
         <Board />
       </div>
     </div>

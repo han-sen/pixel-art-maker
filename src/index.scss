@@ -12,11 +12,7 @@ $grey: #586673;
 $grey-light: #efecec;
 $grey-translucent: #efecece3;
 
-/*** UTIL ***/
-
-.highlight {
-  color: $blue-light;
-}
+$background-color: #dfe6ff;
 
 body {
   font-family: "Arial", sans-serif;
@@ -36,6 +32,41 @@ button {
 .page_wrap {
   display: flex;
   height: 100vh;
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.brand_wrap {
+  background: none;
+  color: #1b76d5;
+  border: 1px solid #1b76d5;
+  font-size: 12px;
+  border-bottom: 2px solid #1a75d5;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 6px;
+  padding: 6px 24px 5px 12px;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
+  background-image:
+    url(data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E),
+    linear-gradient(to bottom, #bbdefc 0%, #bbdefc 100%);
+  background-repeat: no-repeat, repeat;
+  background-position:
+    right 0.7em top 50%,
+    0 0;
+  background-size:
+    0.65em auto,
+    100%;
+  font-weight: 600;
+
+  h1 {
+    padding: 0;
+    margin: 0;
+    font-size: 1.2rem;
+  }
 }
 
 @media screen and (max-width: $breakpoint) {
@@ -47,33 +78,41 @@ button {
   }
 }
 
-@media screen and (min-width: $breakpoint-lg) {
-  .instructions {
-    width: 25%;
-    background-image: url("./img/mountains-re.png");
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: contain;
-  }
-  .app_container {
-    width: 75%;
-  }
+.brand_footer {
+  width: 100%;
+  background-image: url("./img/mtn-sm.png");
+  background-repeat: repeat;
+  background-position: bottom;
+  background-size: contain;
 }
 
 .instructions {
-  background-color: $blue-midnight;
-  color: white;
-  text-align: center;
+  padding: 20px;
 }
 
 .instructions_wrap {
   padding: 20px;
+  border-radius: 6px;
+  background-color: white;
+  box-shadow:
+    0 3px 6px rgba(0, 0, 0, 0.16),
+    0 3px 6px rgba(0, 0, 0, 0.23);
+  width: 100%;
+  background-image: url("./img/mtn-sm.png");
+  background-repeat: repeat;
+  background-position: bottom;
+  background-size: contain;
+}
+
+.instructions_inner {
+  color: rgb(1, 0, 20);
 }
 
 .app_container {
-  background-color: $blue-light;
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
@@ -84,6 +123,7 @@ button {
 
 .app_wrap_inner {
   display: flex;
+  gap: 12px;
   margin-bottom: 20px;
 }
 
@@ -109,7 +149,7 @@ button {
     0 3px 6px rgba(0, 0, 0, 0.23);
   background-color: white;
   padding-bottom: 10px;
-  border-radius: 0px 6px 6px 0px;
+  border-radius: 6px;
   align-self: center;
 }
 
@@ -312,6 +352,7 @@ button {
   img {
     width: 32px;
   }
+  color: black;
 }
 
 /* colorpicker styles */
