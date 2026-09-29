@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Square from "./Square";
-import paletteIcon from "../img/palette.svg";
+import { Palette } from "lucide-react";
 import { colorSets } from "./colorSets";
 
 type PalettePickerProps = {
@@ -13,7 +13,7 @@ export default function PalettePicker({ onSelect }: PalettePickerProps) {
   return (
     <div className="palette_wrap">
       <div className="palette_header">
-        <img src={paletteIcon} alt="palette" />
+        <Palette size={16} aria-hidden />
         <label htmlFor="palette_select">Palette</label>
         <select
           id="palette_select"

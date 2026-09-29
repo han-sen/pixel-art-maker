@@ -1,23 +1,46 @@
-import { useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import ColorPicker from "./ColorPicker";
 import Palette from "./Palette";
 import PalettePicker from "./PalettePicker";
 import PixelCanvas from "./PixelCanvas";
 import SaveButton from "./SaveButton";
-import fillIcon from "../img/fill.svg";
-import clearIcon from "../img/clear.svg";
-import gridIcon from "../img/grid.svg";
+import { historyReducer, initHistory } from "../lib/history";
+import { Grid3x3, PaintBucket, Redo2, Trash2, Undo2 } from "lucide-react";
+import { loadDrawing, saveDrawing } from "../lib/storage";
 
 const GRID_SIZE = 22;
 const CELL_SIZE = 16;
 const BLANK = "#ffffff";
 const DEFAULT_COLOR = "rgb(28, 170, 225)";
+const ICON_SIZE = 14;
 
 const blankBoard = () => Array<string>(GRID_SIZE * GRID_SIZE).fill(BLANK);
 
+/** Everything undo/redo restores. */
+type Drawing = { squares: string[]; usedColors: string[] };
+
+const blankDrawing = (): Drawing => ({ squares: blankBoard(), usedColors: [] });
+
+/** Add `c` to the used colors, returning the same array if it's already there. */
+const withColor = (colors: string[], c: string) =>
+  colors.includes(c) ? colors : [...colors, c];
+
+const initialDrawing = (): Drawing => {
+  const savedDrawing = loadDrawing();
+  if (savedDrawing === null || savedDrawing.gridSize !== GRID_SIZE) {
+    return blankDrawing();
+  }
+  const { squares, usedColors } = savedDrawing;
+  return { squares, usedColors };
+};
+
 export default function Board() {
-  const [squares, setSquares] = useState(blankBoard);
-  const [usedColors, setUsedColors] = useState<string[]>([]);
+  const [history, dispatch] = useReducer(
+    historyReducer<Drawing>,
+    undefined,
+    () => initHistory(initialDrawing()),
+  );
+  const { squares, usedColors } = history.present;
   const [color, setColorState] = useState(DEFAULT_COLOR);
   const [showGrid, setShowGrid] = useState(true);
   const [erasing, setErasing] = useState(false);
@@ -25,29 +48,66 @@ export default function Board() {
   // Normalize so "#FF004D" and "#ff004d" count as one used color.
   const setColor = (c: string) => setColorState(c.toLowerCase());
 
-  const trackColor = (c: string) =>
-    setUsedColors((prev) => (prev.includes(c) ? prev : [...prev, c]));
-
-  const paint = (index: number) => {
-    setSquares((prev) => {
-      if (prev[index] === color) return prev;
-      const next = prev.slice();
-      next[index] = color;
-      return next;
+  // Returning the same object when nothing changes lets the history skip
+  // recording strokes that didn't alter the board.
+  const paint = (index: number) =>
+    dispatch({
+      type: "update",
+      update: (d) => {
+        if (d.squares[index] === color) return d;
+        const next = d.squares.slice();
+        next[index] = color;
+        return { squares: next, usedColors: withColor(d.usedColors, color) };
+      },
     });
-    trackColor(color);
-  };
 
-  const fillBoard = () => {
-    setSquares(Array<string>(GRID_SIZE * GRID_SIZE).fill(color));
-    trackColor(color);
-  };
+  const fillBoard = () =>
+    dispatch({
+      type: "apply",
+      update: (d) => ({
+        squares: Array<string>(GRID_SIZE * GRID_SIZE).fill(color),
+        usedColors: withColor(d.usedColors, color),
+      }),
+    });
 
   const clearBoard = () => {
-    setSquares(blankBoard());
-    setUsedColors([]);
+    dispatch({ type: "apply", update: blankDrawing });
     setErasing(true);
   };
+
+  const undo = () => dispatch({ type: "undo" });
+  const redo = () => dispatch({ type: "redo" });
+
+  useEffect(() => {
+    // autosave on every change except when we are in the middle of a stroke
+    if (history.checkpoint !== null) return;
+
+    saveDrawing({
+      squares: history.present.squares,
+      usedColors: history.present.usedColors,
+      version: 1,
+      gridSize: GRID_SIZE,
+    });
+  }, [history.present, history.checkpoint]);
+
+  // Ctrl/Cmd+Z undoes; Ctrl/Cmd+Shift+Z or Ctrl+Y redoes.
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (!(e.ctrlKey || e.metaKey)) return;
+      // Leave text fields (the RGB/HEX inputs) their own native undo.
+      if (e.target instanceof HTMLInputElement) return;
+      const key = e.key.toLowerCase();
+      if (key === "z") {
+        e.preventDefault();
+        dispatch({ type: e.shiftKey ? "redo" : "undo" });
+      } else if (key === "y") {
+        e.preventDefault();
+        dispatch({ type: "redo" });
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
 
   return (
     <section className="app_wrap">
@@ -57,11 +117,11 @@ export default function Board() {
             <ColorPicker color={color} onChange={setColor} />
           </div>
           <button className="controls_button" onClick={fillBoard}>
-            <img src={fillIcon} alt="" />
+            <PaintBucket size={ICON_SIZE} aria-hidden />
             Fill
           </button>
           <button className="controls_button" onClick={clearBoard}>
-            <img src={clearIcon} alt="" />
+            <Trash2 size={ICON_SIZE} aria-hidden />
             Clear
           </button>
           <button
@@ -69,8 +129,26 @@ export default function Board() {
             onClick={() => setShowGrid((g) => !g)}
             aria-pressed={showGrid}
           >
-            <img src={gridIcon} alt="grid" />
+            <Grid3x3 size={ICON_SIZE} aria-hidden />
             {showGrid ? "On" : "Off"}
+          </button>
+          <button
+            className="controls_button"
+            onClick={undo}
+            disabled={history.past.length === 0}
+            title="Undo (Ctrl+Z)"
+          >
+            <Undo2 size={ICON_SIZE} aria-hidden />
+            Undo
+          </button>
+          <button
+            className="controls_button"
+            onClick={redo}
+            disabled={history.future.length === 0}
+            title="Redo (Ctrl+Shift+Z)"
+          >
+            <Redo2 size={ICON_SIZE} aria-hidden />
+            Redo
           </button>
           <SaveButton squares={squares} gridSize={GRID_SIZE} />
         </div>
@@ -85,6 +163,8 @@ export default function Board() {
             cellSize={CELL_SIZE}
             showGrid={showGrid}
             onPaintCell={paint}
+            onStrokeStart={() => dispatch({ type: "begin" })}
+            onStrokeEnd={() => dispatch({ type: "end" })}
           />
         </div>
       </div>

@@ -14,14 +14,6 @@ $grey-translucent: #efecece3;
 
 /*** UTIL ***/
 
-.tilted {
-  transform: rotate(45deg);
-  transition: transform 0.2s ease-in-out;
-}
-.tilted:hover {
-  transform: rotate(0deg);
-}
-
 .highlight {
   color: $blue-light;
 }
@@ -56,9 +48,6 @@ button {
 }
 
 @media screen and (min-width: $breakpoint-lg) {
-  .col-2 {
-    padding: 20px;
-  }
   .instructions {
     width: 25%;
     background-image: url("./img/mountains-re.png");
@@ -90,7 +79,6 @@ button {
 
 .app_wrap {
   display: inline-block;
-  padding: 20px;
   border-radius: 6px;
 }
 
@@ -121,7 +109,7 @@ button {
     0 3px 6px rgba(0, 0, 0, 0.23);
   background-color: white;
   padding-bottom: 10px;
-  border-radius: 6px 0px 0px 6px;
+  border-radius: 0px 6px 6px 0px;
   align-self: center;
 }
 
@@ -135,10 +123,12 @@ button {
 .controls_button {
   position: relative;
   overflow: hidden;
-  img {
-    width: 12px;
-    height: 12px;
+  svg {
     margin-bottom: 5px;
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
   }
 }
 
@@ -270,19 +260,9 @@ button {
     margin: 0;
     padding: 0px;
   }
-  img {
-    width: 16px;
-    height: 16px;
-    margin-right: 6px;
-  }
   svg {
-    fill: $blue-dark;
-  }
-}
-
-.palette_header:hover {
-  img {
-    transform: rotate(0deg);
+    color: $blue-dark;
+    margin-right: 6px;
   }
 }
 

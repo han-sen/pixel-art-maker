@@ -1,5 +1,5 @@
 import { exportPng } from "../lib/pixels";
-import saveIcon from "../img/save.svg";
+import { Save } from "lucide-react";
 
 type SaveButtonProps = {
   squares: readonly string[];
@@ -27,7 +27,7 @@ export default function SaveButton({
 
   return (
     <button className="controls_button" onClick={save}>
-      <img src={saveIcon} alt="" />
+      <Save size={14} aria-hidden />
       Save
     </button>
   );

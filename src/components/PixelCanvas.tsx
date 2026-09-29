@@ -9,6 +9,9 @@ type PixelCanvasProps = {
   cellSize: number;
   showGrid: boolean;
   onPaintCell: (index: number) => void;
+  /** Called once per stroke, so the whole stroke can be undone as one step. */
+  onStrokeStart: () => void;
+  onStrokeEnd: () => void;
 };
 
 type Point = { x: number; y: number };
@@ -30,6 +33,8 @@ export default function PixelCanvas({
   cellSize,
   showGrid,
   onPaintCell,
+  onStrokeStart,
+  onStrokeEnd,
 }: PixelCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   /** Last pointer position while a stroke is in progress, otherwise null. */
@@ -77,6 +82,7 @@ export default function PixelCanvas({
     // Keep receiving moves even if the pointer leaves the canvas mid-stroke.
     e.currentTarget.setPointerCapture(e.pointerId);
     lastPoint.current = null;
+    onStrokeStart();
     paintStroke(e);
   };
 
@@ -86,6 +92,7 @@ export default function PixelCanvas({
 
   const stopPainting = () => {
     lastPoint.current = null;
+    onStrokeEnd();
   };
 
   return (

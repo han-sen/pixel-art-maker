@@ -1,5 +1,5 @@
 import Square from "./Square";
-import brushIcon from "../img/brush-solid.svg";
+import { Brush } from "lucide-react";
 
 type PaletteProps = {
   colors: readonly string[];
@@ -10,7 +10,7 @@ export default function Palette({ colors, onSelect }: PaletteProps) {
   return (
     <div className="palette_wrap">
       <div className="palette_header">
-        <img src={brushIcon} alt="palette" className="tilted" />
+        <Brush size={16} aria-hidden />
         <p>Colors Used</p>
       </div>
       <div className="palette_squares">
